@@ -9,11 +9,15 @@ This is a framework I made for use with augmented reality, using OpenGLES 2.0. I
  - Video (a plane with animated texture)
  - 3d Model (md2 format)
 
-I used vuforia cloud recognizion service so it can be easily integrated in any project just sending the model and projection matrix.
+I used vuforia cloud recognizion service when I was making the project, but it can be easily integrated in any other project just sending the model and projection matrix to the RTRender View Controller via NotificationCenter.
 
 If there is no target you can rotate and zoom in and out the object, also you can mix any object together.
 
 Enjoy =)
+
+Author
+----
+Rodrigo Gálvez
 
 Version
 ----
