@@ -67,7 +67,9 @@
         NSMutableArray *objectArray = [[NSMutableArray alloc] init];
         
         MD2Object *md2Blade = [[MD2Object alloc] init];
-        [md2Blade loadMD2WithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Blade" ofType:@"md2"] texturePath:[[NSBundle mainBundle] pathForResource:@"Blade" ofType:@"jpg"]];
+        NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"Blade.md2" ofType:nil inDirectory:@"RTResources/Md2 Models"];
+        NSString *modelTexture = [[NSBundle mainBundle] pathForResource:@"Blade.jpg" ofType:nil inDirectory:@"RTResources/Md2 Models"];
+        [md2Blade loadMD2WithContentsOfFile:modelPath texturePath:modelTexture];
         [objectArray addObject:md2Blade];
         
         _renderVC = [[RTRenderVC alloc] initWithObjectsArray:objectArray];

@@ -22,7 +22,16 @@ Rodrigo Gálvez
 Version
 ----
 
+1.1
+----
+
+- Fixed build problem with AVPlayerItemStatus
+- [[NSBundle mainBundle]pathForResource:ofType:] returned nil so I changed for [[NSBundle mainBundle]pathForResource:ofType:inDirectory:] instead
+
+
 1.0
+----
+
 
 License
 ----
