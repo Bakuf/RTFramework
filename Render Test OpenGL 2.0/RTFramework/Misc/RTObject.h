@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 
-typedef enum {
+typedef NS_ENUM(NSInteger, RTObjectType) {
     RTObjectTypeImage,
     RTObjectTypeVideo,
     RTObjectTypeAudio,
-    RTObjectTypeMD2Model
-}RTObjectType;
+    RTObjectTypeMD2Model,
+    RTObjectTypeOBJModel
+};
 
 @interface RTObject : NSObject
 
@@ -42,6 +43,9 @@ typedef enum {
 
 //Methods for MD2Object
 - (void) loadMD2WithContentsOfFile:(NSString *)path texturePath:(NSString*)texturePath;
+
+//Methods for OBJObject
+- (void) loadOBJWithContentsOfFile:(NSString *)path texturePath:(NSString*)texturePath;
 
 //Methods for Image
 - (void) prepareImageWithFilePath:(NSString*)filePath;

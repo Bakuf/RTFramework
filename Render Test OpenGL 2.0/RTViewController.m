@@ -13,6 +13,7 @@
 #import "RTVideoObject.h"
 #import "RTImageObject.h"
 #import "RTAudioObject.h"
+#import "RTObjObject.h"
 
 
 @interface RTViewController () <UIGestureRecognizerDelegate>
@@ -66,11 +67,23 @@
         
         NSMutableArray *objectArray = [[NSMutableArray alloc] init];
         
+        //Blade Md2 Model
+        
         MD2Object *md2Blade = [[MD2Object alloc] init];
         NSString *modelPath = [[NSBundle mainBundle] pathForResource:@"Blade.md2" ofType:nil inDirectory:@"RTResources/Md2 Models"];
         NSString *modelTexture = [[NSBundle mainBundle] pathForResource:@"Blade.jpg" ofType:nil inDirectory:@"RTResources/Md2 Models"];
         [md2Blade loadMD2WithContentsOfFile:modelPath texturePath:modelTexture];
         [objectArray addObject:md2Blade];
+        
+        
+        //Cube OBJ Cube
+        
+//        RTObjObject *objModel = [[RTObjObject alloc] init];
+//        NSString *objmodelPath = [[NSBundle mainBundle] pathForResource:@"cube.obj" ofType:nil inDirectory:@"RTResources/Obj Models"];
+//        NSString *objmodelTexture = [[NSBundle mainBundle] pathForResource:@"cube.png" ofType:nil inDirectory:@"RTResources/Obj Models"];
+//        [objModel loadOBJWithContentsOfFile:objmodelPath texturePath:objmodelTexture];
+//        NSLog(@"obj model info : \n\n %@",objModel.description);
+//        [objectArray addObject:objModel];
         
         _renderVC = [[RTRenderVC alloc] initWithObjectsArray:objectArray];
         [_contentView addSubview:_renderVC.view];

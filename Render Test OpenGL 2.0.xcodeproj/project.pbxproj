@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730A3B3B1AC71C6200F204C6 /* RTObjParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 730A3B3A1AC71C6200F204C6 /* RTObjParser.mm */; };
+		730A3B3E1AC71D9F00F204C6 /* RTObjObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 730A3B3D1AC71D9F00F204C6 /* RTObjObject.m */; };
+		730A3B401AC7383600F204C6 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 730A3B3F1AC7383600F204C6 /* libc++.dylib */; };
 		73A70C6119A5A19B00986703 /* Music-Note.png in Resources */ = {isa = PBXBuildFile; fileRef = 73A70C4A19A5A19B00986703 /* Music-Note.png */; };
 		73A70C6219A5A19B00986703 /* RTAudioObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A70C4C19A5A19B00986703 /* RTAudioObject.m */; };
 		73A70C6319A5A19B00986703 /* RTImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A70C4F19A5A19B00986703 /* RTImageObject.m */; };
@@ -52,6 +55,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		730A3B3A1AC71C6200F204C6 /* RTObjParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RTObjParser.mm; path = "Obj Model Parser/RTObjParser.mm"; sourceTree = "<group>"; };
+		730A3B3C1AC71D9F00F204C6 /* RTObjObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTObjObject.h; path = "Obj Model Parser/RTObjObject.h"; sourceTree = "<group>"; };
+		730A3B3D1AC71D9F00F204C6 /* RTObjObject.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = RTObjObject.m; path = "Obj Model Parser/RTObjObject.m"; sourceTree = "<group>"; };
+		730A3B3F1AC7383600F204C6 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		730A3B421AC738CB00F204C6 /* RTObjParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RTObjParser.h; path = "Obj Model Parser/RTObjParser.h"; sourceTree = "<group>"; };
 		73A70C4A19A5A19B00986703 /* Music-Note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Music-Note.png"; sourceTree = "<group>"; };
 		73A70C4B19A5A19B00986703 /* RTAudioObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTAudioObject.h; sourceTree = "<group>"; };
 		73A70C4C19A5A19B00986703 /* RTAudioObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTAudioObject.m; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				730A3B401AC7383600F204C6 /* libc++.dylib in Frameworks */,
 				73CD196518FE41CD0074C859 /* SystemConfiguration.framework in Frameworks */,
 				73CD196318FE41C50074C859 /* CoreMotion.framework in Frameworks */,
 				73B0B69D18F9CB6C0032FF50 /* QuartzCore.framework in Frameworks */,
@@ -130,9 +139,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		730A3B391AC71B6E00F204C6 /* Obj Model Parser */ = {
+			isa = PBXGroup;
+			children = (
+				730A3B421AC738CB00F204C6 /* RTObjParser.h */,
+				730A3B3A1AC71C6200F204C6 /* RTObjParser.mm */,
+				730A3B3C1AC71D9F00F204C6 /* RTObjObject.h */,
+				730A3B3D1AC71D9F00F204C6 /* RTObjObject.m */,
+			);
+			name = "Obj Model Parser";
+			sourceTree = "<group>";
+		};
 		73A70C4819A5A19B00986703 /* RTFramework */ = {
 			isa = PBXGroup;
 			children = (
+				730A3B391AC71B6E00F204C6 /* Obj Model Parser */,
 				73A70C4919A5A19B00986703 /* Audio Object */,
 				73A70C4D19A5A19B00986703 /* Image Object */,
 				73A70C5019A5A19B00986703 /* MD2 Model Parser */,
@@ -221,6 +242,7 @@
 		73B0B66818F9C9DD0032FF50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				730A3B3F1AC7383600F204C6 /* libc++.dylib */,
 				73CD196418FE41CD0074C859 /* SystemConfiguration.framework */,
 				73CD196218FE41C50074C859 /* CoreMotion.framework */,
 				73B0B69C18F9CB6C0032FF50 /* QuartzCore.framework */,
@@ -388,9 +410,11 @@
 				73A70C6619A5A19B00986703 /* RTObject.m in Sources */,
 				73A70C6719A5A19B00986703 /* RTRenderVC.m in Sources */,
 				73A70C6219A5A19B00986703 /* RTAudioObject.m in Sources */,
+				730A3B3E1AC71D9F00F204C6 /* RTObjObject.m in Sources */,
 				73A70C6319A5A19B00986703 /* RTImageObject.m in Sources */,
 				73CD196C18FE4A970074C859 /* RTViewController.m in Sources */,
 				73A70C6419A5A19B00986703 /* MD2Object.m in Sources */,
+				730A3B3B1AC71C6200F204C6 /* RTObjParser.mm in Sources */,
 				73B0B67618F9C9DE0032FF50 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

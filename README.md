@@ -2,12 +2,13 @@
 
 # RT Framework
 
-This is a framework I made for use with augmented reality, using OpenGLES 2.0. It was made to display content in 3d, for now there are only 4 types of contents :
+This is a framework I made for use with augmented reality, using OpenGLES 2.0. It was made to display content in 3d, for now there are only 5 types of contents :
 
  - Images (a standar plane with texture)
  - Sound (just a note image is displayed and the sound can be paused with a touch)
  - Video (a plane with animated texture)
  - 3d Model (md2 format)
+ - 3d Model (obj format)
 
 I used vuforia cloud recognizion service when I was making the project, but it can be easily integrated in any other project just sending the model and projection matrix to the RTRender View Controller via NotificationCenter.
 
@@ -21,6 +22,11 @@ Rodrigo Gálvez
 
 Version
 ----
+
+1.2
+----
+
+- Added Obj Format :D
 
 1.1
 ----
