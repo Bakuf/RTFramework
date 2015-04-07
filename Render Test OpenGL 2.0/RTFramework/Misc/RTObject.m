@@ -53,7 +53,7 @@
 }
 
 //Methods for OBJObject
-- (void) loadOBJWithContentsOfFile:(NSString *)path texturePath:(NSString*)texturePath{
+- (void) loadOBJWithContentsOfFile:(NSString *)path texturePath:(NSString*)texturePath{ 
     objectType = RTObjectTypeOBJModel;
     [self resetPositionAndScale];
 }

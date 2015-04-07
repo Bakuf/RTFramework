@@ -31,11 +31,14 @@ public:
         
     void init( void );
     void processObjFile(std::string filepathObj);
+    void processWithNormals(std::string filepathObj, Model model);
+    void processWithOutNormals(std::string filepathObj, Model model);
     
     void printPositionData(void);
     void printTextureData(void);
     void printNormalData(void);
     
+    BOOL hasNormals();
     
     Model model;
     

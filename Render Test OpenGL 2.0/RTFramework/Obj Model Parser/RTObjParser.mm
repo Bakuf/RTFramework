@@ -136,15 +136,101 @@ void extractOBJdata(string fp, float positions[][3], float texels[][2], float no
     inOBJ.close();
 }
 
+void extractOBJdataNoNormals(string fp, float positions[][3], float texels[][2], int faces[][6])
+{
+    // Counters
+    int p = 0;
+    int t = 0;
+    int f = 0;
+    
+    // Open OBJ file
+    ifstream inOBJ;
+    inOBJ.open(fp);
+    if(!inOBJ.good())
+    {
+        cout << "ERROR OPENING OBJ FILE" << endl;
+        exit(1);
+    }
+    
+    // Read OBJ file
+    while(!inOBJ.eof())
+    {
+        string line;
+        getline(inOBJ, line);
+        string type = line.substr(0,2);
+        
+        // Positions
+        if(type.compare("v ") == 0)
+        {
+            // Copy line for parsing
+            char* l = new char[line.size()+1];
+            memcpy(l, line.c_str(), line.size()+1);
+            
+            // Extract tokens
+            strtok(l, " ");
+            for(int i=0; i<3; i++)
+                positions[p][i] = atof(strtok(NULL, " "));
+            
+            // Wrap up
+            delete[] l;
+            p++;
+        }
+        
+        // Texels
+        else if(type.compare("vt") == 0)
+        {
+            char* l = new char[line.size()+1];
+            memcpy(l, line.c_str(), line.size()+1);
+            
+            strtok(l, " ");
+            for(int i=0; i<2; i++)
+                texels[t][i] = atof(strtok(NULL, " "));
+            
+            delete[] l;
+            t++;
+        }
+        
+        // Faces
+        else if(type.compare("f ") == 0)
+        {
+            char* l = new char[line.size()+1];
+            memcpy(l, line.c_str(), line.size()+1);
+            
+            strtok(l, " ");
+            for(int i=0; i<6; i++)
+                faces[f][i] = atof(strtok(NULL, " /"));
+            
+            delete[] l;
+            f++;
+        }
+    }
+    
+    // Close OBJ file
+    inOBJ.close();
+}
+
 void RTObjParser::init( void )
 {
     self = new RTObjParser();
 }
 
-void RTObjParser::processObjFile(string filepathObj)
-{
+void RTObjParser::processObjFile(std::string filepathObj){
     // Model Info
     model = getOBJinfo(filepathObj);
+    
+    if (hasNormals()) {
+        processWithNormals(filepathObj, model);
+    }else{
+        processWithOutNormals(filepathObj, model);
+    }
+    
+}
+
+BOOL RTObjParser::hasNormals(){
+    return model.normals != 0;
+}
+
+void RTObjParser::processWithNormals(string filepathObj, Model model){
     
     // Model Data
     float positions[model.positions][3];    // XYZ
@@ -197,6 +283,45 @@ void RTObjParser::processObjFile(string filepathObj)
     }
 }
 
+void RTObjParser::processWithOutNormals(string filepathObj, Model model){
+    
+    // Model Data
+    float positions[model.positions][3];    // XYZ
+    float texels[model.texels][2];          // UV
+    int faces[model.faces][6];              // PTN PTN PTN
+    
+    extractOBJdataNoNormals(filepathObj, positions, texels, faces);
+    
+    // Positions
+    positionData = new float [model.vertices*3];
+    int counter = 0;
+    for(int i=0; i<model.faces; i++)
+    {
+        for (int j = 0; j < 3; j++) {
+            int VPos = faces[i][j*2]-1;
+            for (int k = 0; k<3; k++) {
+                positionData[counter] = (float)positions[VPos][k];
+                counter++;
+            }
+        }
+    }
+    
+    // Texels
+    textureData = new float [model.vertices*2];
+    counter = 0;
+    for(int i=0; i<model.faces; i++)
+    {
+        for (int j = 0; j < 3; j++) {
+            int VTex = faces[i][(j*(2))+1]-1;
+            for (int k = 0; k<2; k++) {
+                textureData[counter] = (float)texels[VTex][k];
+                counter++;
+            }
+        }
+    }
+    
+}
+
 void RTObjParser::printPositionData(){
     printf("positionData[%f]{\n",(float)model.vertices*3);
     for (int i = 0; i<(int)model.vertices*3; i++) {
@@ -222,6 +347,10 @@ void RTObjParser::printTextureData(){
 }
 
 void RTObjParser::printNormalData(){
+    if (!hasNormals()) {
+        printf("Model Has No Normals!!!");
+        return;
+    }
     printf("normalData[%f]{\n",(float)model.vertices*3);
     for (int i = 0; i<(int)model.vertices*3; i++) {
         if ((i+1)%3 != 0){

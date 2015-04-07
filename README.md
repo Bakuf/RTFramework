@@ -23,6 +23,12 @@ Rodrigo Gálvez
 Version
 ----
 
+1.2.1
+----
+
+- Added support for Obj models without normals :D
+
+
 1.2
 ----
 

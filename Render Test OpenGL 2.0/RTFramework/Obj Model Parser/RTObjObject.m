@@ -120,8 +120,10 @@
     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 0, (const GLvoid *) &objParser.textureData[0]);
     
-    glEnableVertexAttribArray(GLKVertexAttribNormal);
-    glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *) &objParser.normalData[0]);
+    if (objParser.hasNormals()) {
+        glEnableVertexAttribArray(GLKVertexAttribNormal);
+        glVertexAttribPointer(GLKVertexAttribNormal, 3, GL_FLOAT, GL_FALSE, 0, (const GLvoid *) &objParser.normalData[0]);
+    }
     
     glDrawArrays( GL_TRIANGLES, 0, objParser.model.vertices);
     
